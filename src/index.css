@@ -32,3 +32,22 @@ header {
   border-radius: 5px;
 }
 
+h3 {
+  margin-bottom: 10px;
+}
+
+.taskCardTitleInputArea {
+  margin-bottom: 10px;
+  width: 30%;
+  cursor: pointer;
+}
+
+.taskCardTitleInput {
+  width: 80px;
+  font-size: 1.1rem;
+  padding: 4px 6px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+
