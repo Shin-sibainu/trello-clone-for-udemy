@@ -1,4 +1,5 @@
 import React from "react";
+import { Draggable } from "react-beautiful-dnd";
 
 export const Task = ({ task, setTaskList, taskList }) => {
   const handleDelete = (id) => {
@@ -7,11 +8,24 @@ export const Task = ({ task, setTaskList, taskList }) => {
   };
 
   return (
-    <div className="taskBox">
-      <p className="taskText">{task.text}</p>
-      <button className="taskTrashButton" onClick={() => handleDelete(task.id)}>
-        <i className="fas fa-trash-alt"></i>
-      </button>
-    </div>
+    <Draggable index={task.id} draggableId={task.draggableId}>
+      {(provided) => (
+        <div
+          className="taskBox"
+          key={task.id}
+          ref={provided.innerRef}
+          {...provided.dragHandleProps}
+          {...provided.draggableProps}
+        >
+          <p className="taskText">{task.text}</p>
+          <button
+            className="taskTrashButton"
+            onClick={() => handleDelete(task.id)}
+          >
+            <i className="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      )}
+    </Draggable>
   );
 };

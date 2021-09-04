@@ -1,14 +1,28 @@
 import React from "react";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 
 export const Tasks = ({ taskList, setTaskList }) => {
   return (
     <div>
-      {taskList.map((task, index) => (
-        <div key={index}>
-          <Task task={task} setTaskList={setTaskList} taskList={taskList} />
-        </div>
-      ))}
+      <DragDropContext>
+        <Droppable droppableId="droppable">
+          {(provided) => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              {taskList.map((task) => (
+                <div key={task.id}>
+                  <Task
+                    task={task}
+                    setTaskList={setTaskList}
+                    taskList={taskList}
+                  />
+                </div>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 };
