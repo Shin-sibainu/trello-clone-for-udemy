@@ -2,16 +2,32 @@ import React from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 
+const reorder = (taskList, startIndex, endIndex) => {
+  const remove = taskList.splice(startIndex, 1);
+  taskList.splice(endIndex, 0, remove[0]);
+};
+
 export const Tasks = ({ taskList, setTaskList }) => {
+  const handleDrangEnd = (result) => {
+    console.log(result);
+    //タスクを並び変える
+    if (!result.destination) {
+      return;
+    }
+    reorder(taskList, result.source.index, result.destination.index);
+    setTaskList(taskList);
+  };
+
   return (
     <div>
-      <DragDropContext>
+      <DragDropContext onDragEnd={handleDrangEnd}>
         <Droppable droppableId="droppable">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              {taskList.map((task) => (
+              {taskList.map((task, index) => (
                 <div key={task.id}>
                   <Task
+                    index={index}
                     task={task}
                     setTaskList={setTaskList}
                     taskList={taskList}
