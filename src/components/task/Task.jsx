@@ -4,7 +4,6 @@ import { Draggable } from "react-beautiful-dnd";
 export const Task = ({ task, setTaskList, taskList, index }) => {
   const handleDelete = (id) => {
     setTaskList(taskList.filter((task) => task.id !== id));
-    console.log(id);
   };
 
   return (

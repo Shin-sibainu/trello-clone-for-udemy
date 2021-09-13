@@ -9,7 +9,6 @@ const reorder = (taskList, startIndex, endIndex) => {
 
 export const Tasks = ({ taskList, setTaskList }) => {
   const handleDrangEnd = (result) => {
-    console.log(result);
     //タスクを並び変える
     if (!result.destination) {
       return;
