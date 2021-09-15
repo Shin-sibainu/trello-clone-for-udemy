@@ -8,7 +8,7 @@ export const AddTaskCardButton = ({ taskCardList, setTaskCardList }) => {
     setTaskCardList([
       ...taskCardList,
       {
-        id: taskCardId,
+        id: taskCardId, //タスクカードのID。ランダムに生成されている。
         draggableId: `taskCard${taskCardId}`,
       },
     ]);

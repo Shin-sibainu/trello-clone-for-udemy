@@ -109,3 +109,16 @@ h3 {
   transform: translate(3px, 3px);
 }
 
+.taskTitleAndDeleteButtonArea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.taskCardDeleteButton {
+  background-color: rgb(228, 228, 228);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(158, 46, 46);
+}
+
